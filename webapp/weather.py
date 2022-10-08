@@ -14,7 +14,7 @@ def weather_by_city(city_name):
             result = requests.get(weather_url, params=params1)
             result.raise_for_status() #Перехватывает 4хх и 5хх ошибки
             weather = result.json()
-            print(weather)
+            #print(weather)
             if 'data' in weather:
                 if 'current_condition' in weather['data']:
                     try:

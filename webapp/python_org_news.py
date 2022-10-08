@@ -1,5 +1,9 @@
+from datetime import datetime
+
 import requests
 from bs4 import BeautifulSoup # Для упрощённой работы с HTML
+
+from webapp.model import db, News
 
 def get_html(url): #принимает url
     try:
@@ -22,10 +26,29 @@ def get_python_news():
             title = news.find('a').text # Найти содержимое атрибута <a></a>  внутри каждого элемента списка
             url = news.find('a')['href'] # К атрибутам обращаться как к словарю, а к содержимому через точку
             published = news.find('time').text
-            result_news.append({
-                'title': title,
-                'url': url,
-                "published": published
-            })
-        return result_news
-    return False
+            print(published)
+            try:
+                published = datetime.strptime(published, '%m. %d, %Y')
+                print(published)
+            except ValueError:
+                published = datetime.now()
+            save_news(title, url, published)
+
+            #не нужно создавать списки потому что теперь всё сохраняется в бд
+    #         result_news.append({
+    #             'title': title,
+    #             'url': url,
+    #             "published": published
+    #         })
+    #     return result_news
+    # return False
+
+def save_news(title, url, published):
+    # проверка на повтор, чтобы не ругалась программа при повторной выгрузке
+    news_exists = News.query.filter(News.url == url).count()
+    #print(news_exists)
+    if not news_exists:
+        # запись данных в БД
+        new_news = News(title=title, url=url, published=published)
+        db.session.add(new_news)
+        db.session.commit()
