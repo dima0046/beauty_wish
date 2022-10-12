@@ -1,8 +1,7 @@
 from flask import Flask,  render_template
 
-from webapp.model import db, News
-from webapp.weather import weather_by_city
-#from webapp.python_org_news import get_python_news
+from webapp.model import db, Products
+from webapp.podrujka_parsing import get_podrujka_make
 
 
 def create_app():
@@ -13,16 +12,10 @@ def create_app():
 
     @app.route('/') #декоратор
     def index():
-        page_title = "Новости Python"
-        weather = weather_by_city(app.config["WEATHER_DEFAULT_CITY"])
-        #news_list = get_python_news()
-        news_list = News.query.order_by(News.published.desc()).all()
+        page_title = "Продукты"
+        #weather = weather_by_city(app.config["WEATHER_DEFAULT_CITY"])
+        #get_podrujka_make()
+        product_list = Products.query.all()
 
-        '''
-        if weather:
-            weather_text = f"Сегодня {weather['temp_C']}. Ощущается как {weather['FeelsLikeC']}!!!"
-        else:
-            weather_text = "Denied!"
-        '''
-        return render_template('index.html', page_title=page_title, weather=weather, news_list=news_list)
+        return render_template('index.html', page_title=page_title, product_list=product_list)
     return app
