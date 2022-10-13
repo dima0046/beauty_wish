@@ -1,5 +1,6 @@
 from flask import Flask,  render_template
 
+from webapp.forms import LoginForm
 from webapp.model import db, Products
 from webapp.podrujka_parsing import get_podrujka_make
 
@@ -16,6 +17,14 @@ def create_app():
         #weather = weather_by_city(app.config["WEATHER_DEFAULT_CITY"])
         #get_podrujka_make()
         product_list = Products.query.all()
-
         return render_template('index.html', page_title=page_title, product_list=product_list)
+
+    @app.route('/login')
+    def login():
+        title = "Авторизация"
+        login_form = LoginForm()
+        return render_template('login.html', page_title=title, form=login_form)
+
+
+
     return app
