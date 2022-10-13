@@ -31,5 +31,9 @@ class User(db.Model, UserMixin):
     def check_password(self, password):# возвращает значение функции generate_password_hash
         return check_password_hash(self.password, password)
 
+    @property
+    def is_admin(self):
+        return self.role == 'admin'
+
     def __repr__(self): # Чтобы выводить на экран читабельный вид юзера
         return '<User {}>'.format(self.username)
