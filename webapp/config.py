@@ -1,3 +1,4 @@
+from datetime import timedelta
 import os
 
 
@@ -7,3 +8,5 @@ SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, '..', 'beautywish
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 SECRET_KEY = "nf9ewff9732jfjsduf"
+
+REMEMBER_COOKIE_DURATION = timedelta(days=5) #запоминает на сколько надо сохранить авторизацию пользователя

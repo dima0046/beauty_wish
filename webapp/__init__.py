@@ -50,7 +50,7 @@ def create_app():
         if form.validate_on_submit(): # Если ошибки не возникло, но запрашиваем данные из БД
             user = User.query.filter_by(username=form.username.data).first() # проверяем существование пользователя
             if user and user.check_password(form.password.data): # Если пользователь существует, то проверяем пароль
-                login_user(user) # логиним пользователя, если всё ок
+                login_user(user, remember=form.remember_me.data) # логиним пользователя, если всё ок. Сохраняем значение чекбокса "Запомнить меня"
                 flash('Вы вошли на сайт')
                 return redirect(url_for('index'))
         flash('Неправильное имя пользователя или пароль')

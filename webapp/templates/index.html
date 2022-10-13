@@ -10,14 +10,12 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>{{ page_title }}</title>
-<<<<<<< HEAD
 </head>
 <body>
 <!-- As a link -->
 <nav class="navbar navbar-light">
     <a class="navbar-brand" href="#">
-        <img src="https://github.com/dima0046/beauty_wish/blob/develop/webapp/images/bw-logo-2.png?raw=true"
-             class="rounded float-left" width="200" height="85" alt="">
+        <img src="https://github.com/dima0046/beauty_wish/blob/develop/webapp/images/bw-logo-2.png?raw=true" class="rounded float-left" width="200" height="85" alt="">
     </a>
 </nav>
 <div class="container">
@@ -65,50 +63,6 @@
                         <p>от {{product.price}} руб.</p>
                     </div>
                 </div>
-=======
-  </head>
-  <body>
-    <!-- As a link -->
-    <nav class="navbar navbar-light">
-      <a class="navbar-brand" href="#">
-        <img src="https://raw.githubusercontent.com/dima0046/beauty_wish/main/webapp/images/bw-woman-logo.png" class="rounded float-left" width="150" height="150" alt="">  
-      </a>
-    </nav>
-    <div class="container">
-      </div>
-        <div class="row">
-            <div class="col-sm-2 text-right">
-              <h2>Категории</h2> 
-            </div>
-            <div class="col-10">
-              <h2>Продукты</h2>
-              <div class="container"></div>
-              {% for product in product_list %}
-              <div class="row">
-                
-                  <div class="round-sep"></div>
-                    <div class="col-xs-2" style="height: 200px;">
-                       <div class="affix">
-                          <img src="{{ product.image }}" class="rounded float-left" alt="product.brand_name" height="130" width="130">
-                       </div>
-                    </div>
-                    <div class="col-md-10 text-left p-4">
-                      <div class="col-md-3 ms-auto orange">
-                      <div class="row">
-                        <h5><a href="{{ product.url }}">  {{product.brand_full_string}} </a> </h5>
-                      </div>
-                      <div class="row">
-                        <p>от {{product.price}} руб.</p>
-                      </div>
-                    </div> 
-                    </div>
-                
-              </div>
-              <div class="clearfix"></div>
-              <br><br>      
-              {% endfor %}
-            </div>
->>>>>>> origin/main
             </div>
 
         </div>
