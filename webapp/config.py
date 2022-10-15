@@ -9,4 +9,4 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 SECRET_KEY = "nf9ewff9732jfjsduf"
 
-REMEMBER_COOKIE_DURATION = timedelta(days=5) #запоминает на сколько надо сохранить авторизацию пользователя
+REMEMBER_COOKIE_DURATION = timedelta(days=5) #запоминает на сколько надо сохранить авторизацию пользователя (flask login)

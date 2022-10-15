@@ -45,7 +45,7 @@ def get_podrujka_make():
             #Название магазина
             store = "podrujka"
 
-            print(brand_full_string, brand_name, brand_product, url, image, price, store)
+            #print(brand_full_string, brand_name, brand_product, url, image, price, store)
 
             # print(brand_name, brand_product)
             save_products(brand_full_string, brand_name, brand_product, url, image, price, store)
