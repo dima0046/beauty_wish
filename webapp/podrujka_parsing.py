@@ -3,7 +3,8 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup # Для упрощённой работы с HTML
 
-from webapp.model import db, Products
+from webapp.db import db
+from webapp.stores.models import Products
 
 def get_html(url): #принимает url
     try:

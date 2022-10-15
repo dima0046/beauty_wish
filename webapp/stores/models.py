@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from webapp.db import db
 
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,4 +13,3 @@ class Products(db.Model):
     def __repr__(self): # self обращение к тому экземпляру класса, который сейчас активен
         return '<Products {} {}>'.format(self.title, self.url) # Нужно, чтобы если захотели сделать print(),
                                                            # нам выводился результат в читабельном формате
-
