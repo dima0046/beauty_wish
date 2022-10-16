@@ -14,7 +14,7 @@ blueprint = Blueprint('user', __name__, url_prefix='/users') # все адрес
 @blueprint.route('/login')
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('products.index'))
     title = "Авторизация"
     login_form = LoginForm()
     return render_template('user/login.html', page_title=title, form=login_form)
@@ -29,7 +29,7 @@ def process_login():
             login_user(user,
                        remember=form.remember_me.data)  # логиним пользователя, если всё ок. Сохраняем значение чекбокса "Запомнить меня"
             flash('Вы вошли на сайт')
-            return redirect(url_for('index'))
+            return redirect(url_for('products.index'))
     flash('Неправильное имя пользователя или пароль')
     return redirect(url_for('user.login'))
 
@@ -37,4 +37,4 @@ def process_login():
 @blueprint.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('products.index'))
