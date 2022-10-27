@@ -28,7 +28,7 @@ def get_podrujka_make():
             brand_full_string = item.find('a', class_='products-list-item__title').text
             brand_full_string_list = str(brand_full_string).split("`")
             brand_name = brand_full_string_list[1]
-            brand_product = brand_full_string_list[2].lstrip()
+            brand_product = brand_full_string_list[-1].lstrip()
 
             # ссылка магазина на продукт
             url = item.find('a', class_='products-list-item__title')['href']

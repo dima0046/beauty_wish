@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_login import LoginManager, current_user, login_required
+from flask_migrate import Migrate
 
 
 from webapp.user.forms import LoginForm
@@ -16,6 +17,7 @@ def create_app():
     # app.run(debug=True)
     app.config.from_pyfile('config.py')
     db.init_app(app)  # инициализируем нашу БД
+    migrate = Migrate(app, db)
 
     # Управление авторизацией пользователя
     login_manager = LoginManager()

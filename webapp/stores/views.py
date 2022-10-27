@@ -12,4 +12,5 @@ def index():
 
 
     product_list = Products.query.all()
+    #product_list1 = Products.query.
     return render_template('products/index.html', page_title=page_title, product_list=product_list)
