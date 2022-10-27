@@ -11,5 +11,5 @@ def index():
     # get_podrujka_make()
 
 
-    #product_list = Products.query.all()
+    product_list = Products.query.all()
     return render_template('products/index.html', page_title=page_title, product_list=product_list)
