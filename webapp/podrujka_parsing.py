@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup # Для упрощённой работы с HTML
 
 from webapp.db import db
-from webapp.stores.models import Products
+from webapp.stores.models import Products, Stores
 
 def get_html(url): #принимает url
     try:
@@ -44,21 +44,24 @@ def get_podrujka_make():
             price = item.find('span').text
 
             #Название магазина
-            store = "podrujka"
+            store_id = 1
 
             #print(brand_full_string, brand_name, brand_product, url, image, price, store)
 
             # print(brand_name, brand_product)
-            save_products(brand_full_string, brand_name, brand_product, url, image, price, store)
+            save_products(brand_full_string, brand_name, brand_product, url, image, price, store_id)
 
 
-def save_products(brand_full_string, brand_name, brand_product, url, image, price, store):
+def save_products(brand_full_string, brand_name, brand_product, url, image, price, store_id):
     # проверка на повтор, чтобы не ругалась программа при повторной выгрузке
     news_exists = Products.query.filter(Products.url == url).count()
+    store_exists = Stores.query.filter(Stores.id == store_id).count()
     # print(news_exists)
-    if not news_exists:
+    if store_exists and not news_exists:
         # запись данных в БД
         new_product = Products(brand_full_string=brand_full_string, brand_name=brand_name, brand_product=brand_product,
-                               url=url, image=image, price=price, store=store)
+                               url=url, image=image, price=price, store_id=store_id)
         db.session.add(new_product)
         db.session.commit()
+    else:
+        print('Не найден магазин для сохранения данных.')
