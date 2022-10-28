@@ -68,5 +68,4 @@ def process_reg():
                 getattr(form, field).label.text,
                 errors
             ))
-    flash('Пожалуйста, исправьте ошибки в форме')
     return redirect(url_for('user.register'))
