@@ -41,14 +41,14 @@ def logout():
     logout_user()
     return redirect(url_for('products.index'))
 
+#Регистрация пользователя
 @blueprint.route('/register')
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('products.index'))
     form = RegistrationForm()
     title = "Регистрация"
-    return render_template('user/registration.html',
-            page_title=title, form=form)
+    return render_template('user/registration.html', page_title=title, form=form)
 
 # Обработчик регистрации
 @blueprint.route('/process-reg', methods=['POST'])
