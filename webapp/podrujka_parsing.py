@@ -43,16 +43,22 @@ def get_podrujka_make():
             price = item.find('div', class_='value one_price value--current')
             price = item.find('span').text
 
+            # категория
+            category = "Макияж"
+
+            # подкатегория
+            subcategory = "Глаза"
+
             #Название магазина
             store_id = 1
 
             #print(brand_full_string, brand_name, brand_product, url, image, price, store)
 
             # print(brand_name, brand_product)
-            save_products(brand_full_string, brand_name, brand_product, url, image, price, store_id)
+            save_products(brand_full_string, brand_name, brand_product, url, image, price, category, store_id, subcategory)
 
 
-def save_products(brand_full_string, brand_name, brand_product, url, image, price, store_id):
+def save_products(brand_full_string, brand_name, brand_product, url, image, price, category, store_id, subcategory):
     # проверка на повтор, чтобы не ругалась программа при повторной выгрузке
     news_exists = Products.query.filter(Products.url == url).count()
     store_exists = Stores.query.filter(Stores.id == store_id).count()
@@ -60,7 +66,7 @@ def save_products(brand_full_string, brand_name, brand_product, url, image, pric
     if store_exists and not news_exists:
         # запись данных в БД
         new_product = Products(brand_full_string=brand_full_string, brand_name=brand_name, brand_product=brand_product,
-                               url=url, image=image, price=price, store_id=store_id)
+                               url=url, image=image, price=price, category=category, store_id=store_id, subcategory=subcategory)
         db.session.add(new_product)
         db.session.commit()
     else:

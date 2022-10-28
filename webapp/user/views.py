@@ -5,8 +5,10 @@ from flask_login import current_user, login_user, logout_user
 # redirect - делает перенаправление пользователя на другую страницу
 # url_for - помогает получить url по имени функции, которая этот url обрабатывает
 
-from webapp.user.forms import LoginForm
+from webapp.db import db
+from webapp.user.forms import LoginForm, RegistrationForm
 from webapp.user.models import User
+
 
 blueprint = Blueprint('user', __name__, url_prefix='/users') # все адреса этой формы будут
                                                              # начинаться с /user (".../user/login" и т.д.)
@@ -38,3 +40,27 @@ def process_login():
 def logout():
     logout_user()
     return redirect(url_for('products.index'))
+
+@blueprint.route('/register')
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('products.index'))
+    form = RegistrationForm()
+    title = "Регистрация"
+    return render_template('user/registration.html',
+            page_title=title, form=form)
+
+# Обработчик регистрации
+@blueprint.route('/process-reg', methods=['POST'])
+def process_reg():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        new_user = User(username=form.username.data,
+                         email=form.email.data, role='user')
+        new_user.set_password(form.password.data)
+        db.session.add(new_user)
+        db.session.commit()
+        flash('Вы успешно зарегистрировались!')
+        return redirect(url_for('user.login'))
+    flash('Пожалуйста, исправьте ошибки в форме')
+    return redirect(url_for('user.register'))

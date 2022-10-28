@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55047100-9b84-417b-a26c-7de1ab94a6b3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/create_store_list.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/user/test_query.py" afterDir="false" />
+    <list default="true" id="55047100-9b84-417b-a26c-7de1ab94a6b3" name="Changes" comment="1111">
+      <change afterPath="$PROJECT_DIR$/webapp/templates/user/registration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/podrujka_parsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/podrujka_parsing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/stores/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/stores/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/stores/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/stores/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/templates/products/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/templates/products/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/user/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/user/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,20 +30,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/dima/projects/beauty_wish/webapp/templates/user"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webapp/templates/user" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/webapp" />
       <recent name="$PROJECT_DIR$/webapp/user" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.create_store_list">
     <configuration name="create_store_list" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="trek_web_design" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -67,9 +69,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="podrujka_parsing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="trek_web_design" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/webapp" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webapp/podrujka_parsing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.create_store_list" />
+        <item itemvalue="Python.podrujka_parsing" />
       </list>
     </recent_temporary>
   </component>
@@ -82,6 +106,14 @@
       <option name="presentableId" value="Default" />
       <updated>1665732043303</updated>
     </task>
+    <task id="LOCAL-00001" summary="1111">
+      <created>1666622516522</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666622516522</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,5 +138,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1111" />
+    <option name="LAST_COMMIT_MESSAGE" value="1111" />
   </component>
 </project>
