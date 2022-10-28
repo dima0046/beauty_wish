@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Email, EqualTo
 
 class LoginForm(FlaskForm):
     username = StringField('Имя пользователя', validators=[DataRequired()], render_kw={"class": "form-control"}) # DataRequired - обязательные поля
@@ -8,3 +8,14 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Запомнить меня', default=True, render_kw={"class": "form-check-input"})
     #email = StringField('Email', validators=[DataRequired()], render_kw={"class": "form-control"})
     submit = SubmitField('Отправить', render_kw={"class":"btn btn-primary"})
+
+class RegistrationForm(FlaskForm):
+    username = StringField('Имя пользователя', validators=[DataRequired()],
+         render_kw={"class": "form-control"})
+    email = StringField('Email', validators=[DataRequired()],
+         render_kw={"class": "form-control"})
+    password = PasswordField('Пароль', validators=[DataRequired()],
+         render_kw={"class": "form-control"})
+    password2 = PasswordField('Повторите пароль', validators=[DataRequired(), EqualTo('password')],
+         render_kw={"class": "form-control"})
+    submit = SubmitField('Отправить!',render_kw={"class": "btn btn-primary"})

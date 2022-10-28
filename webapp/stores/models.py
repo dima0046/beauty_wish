@@ -15,6 +15,7 @@ class Products(db.Model):
     image = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     category = db.Column(db.String, nullable=False)
+    subcategory = db.Column(db.String, nullable=False)
     store_id = db.Column(db.Integer, ForeignKey(Stores.id), index=True, nullable=False)
 
     def __repr__(self): # self обращение к тому экземпляру класса, который сейчас активен
