@@ -9,7 +9,7 @@ from webapp.user.models import User
 from webapp.admin.views import blueprint as admin_blueprint
 from webapp.user.views import blueprint as user_blueprint
 from webapp.stores.views import blueprint as products_blueprint
-from webapp.podrujka_parsing import get_podrujka_make
+from webapp.stores.parsers.podrujka_parsing import get_podrujka_make
 
 
 def create_app():

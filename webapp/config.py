@@ -12,3 +12,5 @@ SECRET_KEY = "nf9ewff9732jfjsduf"
 REMEMBER_COOKIE_DURATION = timedelta(days=5) #запоминает на сколько надо сохранить авторизацию пользователя (flask login)
 
 STORE_LIST = ['Подружка', 'Золотое яблоко']
+CATEGORY_LIST = ['Макияж', 'Уход', 'Волосы', 'Парфюмерия']
+SUBCATEGORY_LIST = ['Лицо', 'Глаза', 'Губы', 'Брови','Ногти', 'Кисти и спонжи']

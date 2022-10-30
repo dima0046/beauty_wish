@@ -1,21 +1,8 @@
 from datetime import datetime
 
-import requests
 from bs4 import BeautifulSoup # Для упрощённой работы с HTML
 
-from webapp.db import db
-from webapp.stores.models import Products, Stores
-
-def get_html(url): #принимает url
-    try:
-        result = requests.get(url) # Базовый запрос. Берем данные из этого url
-        result.raise_for_status() # Перехват ошибок 4хх и 5хх
-        return result.text # Если всё хорошо
-    except(requests.RequestException, ValueError):  # RequestException - если сетевая проблема,
-                                                    # ValueError - если на стороне сервера возникла проблема
-        print("Сетевая ошибка")
-        return False
-
+from webapp.stores.parsers.utils import get_html, save_products
 
 def get_podrujka_make():
     html = get_html("https://www.podrygka.ru/catalog/makiyazh/glaza/teni/")
@@ -57,17 +44,3 @@ def get_podrujka_make():
             # print(brand_name, brand_product)
             save_products(brand_full_string, brand_name, brand_product, url, image, price, category, store_id, subcategory)
 
-
-def save_products(brand_full_string, brand_name, brand_product, url, image, price, category, store_id, subcategory):
-    # проверка на повтор, чтобы не ругалась программа при повторной выгрузке
-    news_exists = Products.query.filter(Products.url == url).count()
-    store_exists = Stores.query.filter(Stores.id == store_id).count()
-    # print(news_exists)
-    if store_exists and not news_exists:
-        # запись данных в БД
-        new_product = Products(brand_full_string=brand_full_string, brand_name=brand_name, brand_product=brand_product,
-                               url=url, image=image, price=price, category=category, store_id=store_id, subcategory=subcategory)
-        db.session.add(new_product)
-        db.session.commit()
-    else:
-        print('Не найден магазин для сохранения данных.')

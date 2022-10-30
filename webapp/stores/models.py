@@ -1,10 +1,21 @@
 from webapp.db import db
 from sqlalchemy import ForeignKey
 
+#from webapp.stores.views import index
+
 
 class Stores(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
+
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+
+class Subategory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+
 
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,6 +27,8 @@ class Products(db.Model):
     price = db.Column(db.Integer, nullable=False)
     category = db.Column(db.String, nullable=False)
     subcategory = db.Column(db.String, nullable=False)
+    #category = db.Column(db.Integer, db.ForeignKey('Category.id', ondelete='CASCADE'), index=True)
+    #subcategory = db.Column(db.Integer, db.ForeignKey('Subcategory.id', ondelete='CASCADE'), index=True)
     store_id = db.Column(db.Integer, ForeignKey(Stores.id), index=True, nullable=False)
 
     def __repr__(self): # self обращение к тому экземпляру класса, который сейчас активен
