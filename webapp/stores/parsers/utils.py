@@ -25,7 +25,7 @@ def save_products(brand_full_string, brand_name, brand_product, url, image, pric
     if product_exists == 0:
         # запись данных в БД
         new_product = Products(brand_full_string=brand_full_string, brand_name=brand_name, brand_product=brand_product,
-                               url=url, image=image, price=price, category=category, store_id=store_id, subcategory=subcategory, text=text)
+                               url=url, image=image, price=price, text=text, category=category, store_id=store_id, subcategory=subcategory)
         db.session.add(new_product)
         db.session.commit()
     else:

@@ -41,10 +41,10 @@ def get_podrujka_make():
 
             #Описание продукта
             html1 = get_html(url)
-            text=""
+            text1=""
             if html1:
                 soup1 = BeautifulSoup(html1, "html.parser")
-                text = soup1.find('div', class_='__text')
+                text1 = soup1.find('div', class_='__text').text
 
-            save_products(brand_full_string, brand_name, brand_product, url, image, price, category, store_id, subcategory, text)
+            save_products(brand_full_string, brand_name, brand_product, url, image, price, category, store_id, subcategory, text1)
 
