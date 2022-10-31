@@ -1,31 +1,22 @@
-<link type="text/css" rel="stylesheet" href="../static/css/categorymenu.css"/>
-<script src="../static/js/categorymenu.js"></script>
-
-<a class="navbar-brand" href="{{ url_for('products.index') }}">
-	<img src="../static/img/bw-logo-new.png" width="30" height="30" class="d-inline-block align-top"
-		alt="">
-	Beauty Wish
-</a>
-<nav class="sidebar">
-<ul class="nav flex-column" id="nav_accordion">
-	<li class="nav-item has-submenu">
-		<a class="nav-link" href="#"> Макияж  </a>
-		<ul class="submenu collapse">
-			<li><a class="nav-link" href="#">Лицо </a></li>
-			<li><a class="nav-link" href="#">Глаза </a></li>
-			<li><a class="nav-link" href="#">Губы </a> </li>
-            <li><a class="nav-link" href="#">Ногти </a> </li>
-            <li><a class="nav-link" href="#">Кисти и спонжи </a> </li>
+<!-- Sidebar -->
+<nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+	<ul class="nav sidebar-nav">
+		<li><a href="#about">About</a></li>
+		<li><a href="#events">Events</a></li>
+		<li><a href="#team">Team</a></li>
+		<li class="dropdown">
+			<a href="#works" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+			<ul class="dropdown-menu animated fadeInLeft" role="menu">
+				<div class="dropdown-header">Dropdown heading</div>
+				<li><a href="#pictures">Pictures</a></li>
+				<li><a href="#videos">Videeos</a></li>
+				<li><a href="#books">Books</a></li>
+				<li><a href="#art">Art</a></li>
+				<li><a href="#awards">Awards</a></li>
+			</ul>
+		</li>
+		<li><a href="#services">Services</a></li>
+		<li><a href="#contact">Contact</a></li>
+		<li><a href="#followme">Follow me</a></li>
 	</ul>
-	</li>
-	<li class="nav-item has-submenu">
-		<a class="nav-link" href="#"> Уход  </a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="#"> Волосы </a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="#"> Парфюмерия </a>
-	</li>
-</ul>
 </nav>
