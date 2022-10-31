@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../static/css/productlist.css">
+<link type="text/css" rel="stylesheet" href="../static/css/productlist.css"/>
 <script src="../static/js/productlist.js"></script>
 
 {% extends "base.html" %}
@@ -16,11 +16,11 @@
         {% endwith %}
 </div>
 
-
+<!--
 <div class="container mb-3 mt-3">
     <button class="btn btn-primary btn-grid">Grid View</button>
     <button class="btn btn-danger btn-list">List View</button>
-
+-->
 <div class="container grid-container">    
     <div class="row">
         {% for product in product_list %}
