@@ -25,6 +25,7 @@ class Products(db.Model):
     url = db.Column(db.String, unique=True, nullable=False)
     image = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    text = db.Column(db.Text, nullable=True)
     category = db.Column(db.String, nullable=False)
     subcategory = db.Column(db.String, nullable=False)
     #category = db.Column(db.Integer, db.ForeignKey('Category.id', ondelete='CASCADE'), index=True)

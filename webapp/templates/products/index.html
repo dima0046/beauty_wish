@@ -17,10 +17,7 @@
     </div>
 </div>
 <div class="row">
-
     <div class="col-10">
-        <h2>Продукты</h2>
-        <div class="container"></div>
         {% for product in product_list %}
         <div class="row">
             <div class="round-sep"></div>
@@ -33,8 +30,7 @@
             <div class="col-md-10 text-left p-4">
                 <div class="col-md-3 ms-auto orange">
                     <div class="row">
-                        <h5><a href="{{ product.url }}"> {{product.brand_full_string}} </a></h5>
-                        <h5><a> {{product.store_id}} </a></h5>
+                        <h5><a href="{{product.url}}"> {{product.brand_full_string}} </a></h5>
                     </div>
                     <div class="row">
                         <p>от {{product.price}} руб.</p>

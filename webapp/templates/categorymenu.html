@@ -1,22 +1,31 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<div class="row">
-    
-    <div class="col-sm-2">
-        <h2>Категории</h2>
-        <ul class="vertical-nav">
-            <li><a href="">Макияж</a></li>
-            <ul class="sub-menu">
-                <div class='column'>
-                    <li><a href="#">Лицо</a></li>
-                    <li><a href="#">Глаза</a></li>
-                    <li><a href="#">Губы</a></li>
-                    <li><a href="#">Ногти</a></li>
-                    <li><a href="#">Кисти и спонжи</a></li>
-                </div>
-            </ul>
-            <li><a href="">Уход</a></li>
-            <li><a href="">Волосы</a></li>
-            <li><a href="">Парфюмерия</a></li>
-        </ul>
-    </div>
-</div>
+<link type="text/css" rel="stylesheet" href="../static/css/categorymenu.css"/>
+<script src="../static/js/categorymenu.js"></script>
+
+<a class="navbar-brand" href="{{ url_for('products.index') }}">
+	<img src="../static/img/bw-logo-new.png" width="30" height="30" class="d-inline-block align-top"
+		alt="">
+	Beauty Wish
+</a>
+<nav class="sidebar">
+<ul class="nav flex-column" id="nav_accordion">
+	<li class="nav-item has-submenu">
+		<a class="nav-link" href="#"> Макияж  </a>
+		<ul class="submenu collapse">
+			<li><a class="nav-link" href="#">Лицо </a></li>
+			<li><a class="nav-link" href="#">Глаза </a></li>
+			<li><a class="nav-link" href="#">Губы </a> </li>
+            <li><a class="nav-link" href="#">Ногти </a> </li>
+            <li><a class="nav-link" href="#">Кисти и спонжи </a> </li>
+	</ul>
+	</li>
+	<li class="nav-item has-submenu">
+		<a class="nav-link" href="#"> Уход  </a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="#"> Волосы </a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="#"> Парфюмерия </a>
+	</li>
+</ul>
+</nav>
