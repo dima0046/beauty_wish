@@ -1,6 +1,6 @@
 flask db stamp head
 flask db migrate
-export FLASK_APP=webapp && flask db migrate -m "comments"
+export FLASK_APP=webapp && flask db migrate -m "comment table added"
 flask db upgrade
 
 

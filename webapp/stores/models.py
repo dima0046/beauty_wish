@@ -16,7 +16,15 @@ class Category(db.Model):
 
 class Subategory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    category_id = db.Column(
+    db.Integer,
+    db.ForeignKey('category.id', ondelete='CASCADE'), # Поведение при удалении. Если удаляется новость,
+                                                        # то все комментарии удаляютс автоматически
+    index=True # Точная комманда, что индекс надо создавать. перестраховка
+    )
     name = db.Column(db.String, nullable=False)
+
+    products = relationship('Category', backref='subategory')
 
 
 class Products(db.Model):

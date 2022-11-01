@@ -6,6 +6,7 @@
 pip install -r requirements.txt
 2. Создать базу данных
 python3 create_db.py 
+Или применить миграцию flask db stamp cc8651750878
 3. Создадим пользователя с правами администратора 
 python3 create_admin.py
 4. Спарсить данные
