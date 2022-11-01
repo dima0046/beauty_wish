@@ -20,8 +20,9 @@ def index():
 @blueprint.route('/product/<int:product_id>')
 def single_item(product_id):
     my_product = Products.query.filter(Products.id == product_id).first()
-    store_name = Stores.query.filter(Stores.id == my_product.store_id).first()
+    store_list = Stores.query.filter(Stores.id == my_product.store_id).all()
     if not my_product:
         abort(404)
 
-    return render_template('products/single_product.html', page_title=my_product.brand_full_string, store=store_name.name, price=my_product.price)
+    return render_template('products/single_product.html', page_title=my_product.brand_full_string,
+                           store_list=store_list, product=my_product)

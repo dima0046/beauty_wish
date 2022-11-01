@@ -2,13 +2,36 @@
 {% block content %}
 <div class="row">
 
-    <div class="col-8">
-        {{ store }}
-    </div>
-
-    <div class="col-4">
-        {{ price }}
-    </div>
-
 </div>
+<div class="row">
+    <div class="col-3">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+                <!--<img class="card-img-top" src="{{ product.image }}" alt="product.brand_name" sizes="16x16">-->
+                <img class="center" src="{{ product.image }}" alt="product.brand_name" height="130" width="130">
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        <h2>{{product.brand_full_string}}</h2>
+        <p class="text-justify">{{ product.text }}</p>
+    </div>
+</div>
+<!-- Stores list -->
+<row>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Наличие в магазине</th>
+      <th scope="col">Цена</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for store in store_list %}
+        <th scope="row"><a href="{{ product.url }}">{{ store.name }}</a></th>
+        <td>{{ product.price }} руб.</td>
+      {% endfor %}
+  </tbody>
+</table>
+</row>
 {% endblock %}
