@@ -29,7 +29,7 @@
                 <!--<img class="card-img-top" src="{{ product.image }}" alt="product.brand_name" sizes="16x16">-->
                 <img class="center" src="{{ product.image }}" alt="product.brand_name" height="130" width="130">
                 <div class="card-body">
-                    <h5><a href="{{ product.url }}"> {{product.brand_full_string}} </a></h5>
+                    <h5><a href="{{ url_for('products.single_item', product_id=product.id) }}"> {{product.brand_full_string}} </a></h5>
                     <p class="card-text">от {{product.price}} руб.</p>
                 </div>
             </div>

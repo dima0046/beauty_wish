@@ -14,7 +14,7 @@
     </div>
     <div class="col-9">
         <h2>{{product.brand_full_string}}</h2>
-        <p class="text-justify">{{ product.text }}</p>
+        <p class="text-justify">{{ product.text|safe }}</p>
     </div>
 </div>
 <!-- Stores list -->
