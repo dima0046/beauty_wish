@@ -1,5 +1,6 @@
 from flask import flash, render_template, redirect, url_for, Blueprint
 from flask_login import current_user, login_user, logout_user
+from webapp.utils import get_redirect_target
 
 # flash - позволяет передавать сообщения между route-ами
 # redirect - делает перенаправление пользователя на другую страницу
@@ -16,7 +17,7 @@ blueprint = Blueprint('user', __name__, url_prefix='/users') # все адрес
 @blueprint.route('/login')
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('products.index'))
+        return redirect(get_redirect_target())
     title = "Авторизация"
     login_form = LoginForm()
     return render_template('user/login.html', page_title=title, form=login_form)
@@ -31,7 +32,7 @@ def process_login():
             login_user(user,
                        remember=form.remember_me.data)  # логиним пользователя, если всё ок. Сохраняем значение чекбокса "Запомнить меня"
             flash('Вы вошли на сайт')
-            return redirect(url_for('products.index'))
+            return redirect(get_redirect_target())
     flash('Неправильное имя пользователя или пароль')
     return redirect(url_for('user.login'))
 
