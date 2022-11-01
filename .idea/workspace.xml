@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55047100-9b84-417b-a26c-7de1ab94a6b3" name="Changes" comment="1. single product page style changed&#10;2. blueprint product/id has some fixes">
+    <list default="true" id="55047100-9b84-417b-a26c-7de1ab94a6b3" name="Changes" comment="Added product detail">
+      <change afterPath="$PROJECT_DIR$/tasks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/templates/products/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/templates/products/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/templates/products/single_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/templates/products/single_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,14 +28,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/dima/projects/beauty_wish/webapp/templates",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/dima/projects/beauty_wish/webapp/templates&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/webapp/templates" />
@@ -126,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667304747919</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added product detail">
+      <created>1667308596734</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667308596734</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,6 +164,7 @@
     <MESSAGE value="1111" />
     <MESSAGE value="category menu html" />
     <MESSAGE value="1. single product page style changed&#10;2. blueprint product/id has some fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. single product page style changed&#10;2. blueprint product/id has some fixes" />
+    <MESSAGE value="Added product detail" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added product detail" />
   </component>
 </project>
