@@ -9,7 +9,7 @@ def get_html(url): #принимает url
         'Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0'   #Заголовок, чтобы было видно, что заходит человек
     }
     try:
-        result = requests.get(url) # Базовый запрос. Берем данные из этого url
+        result = requests.get(url, headers=headers) # Базовый запрос. Берем данные из этого url
         result.raise_for_status() # Перехват ошибок 4хх и 5хх
         return result.text # Если всё хорошо
     except(requests.RequestException, ValueError):  # RequestException - если сетевая проблема,
