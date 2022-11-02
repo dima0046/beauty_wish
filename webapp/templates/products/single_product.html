@@ -41,18 +41,18 @@
 <!-- Comments -->
 
 {% if product.comments %}
-<h3>Отзывы: </h3>
-{% for comment in product.comments %}
-<div class="card">
-  <div class="card-body">
-    <p class="card-text">{{ comment.text }}</p>
-    <p class="card-text">
-      <small>Опубликовано: {{ comment.created.strftime('%d.%m.%Y') }} |
-        Автор: {{ comment.user.username }}</small>
-    </p>
-  </div>
-</div>
-{% endfor %}
+  <h3>Отзывы: </h3>
+    {% for comment in product.comments %}
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">{{ comment.text }}</p>
+          <p class="card-text">
+            <small>Опубликовано: {{ comment.created.strftime('%d.%m.%Y') }} |
+              Автор: {{ comment.user.username }}</small>
+          </p>
+        </div>
+      </div>
+  {% endfor %}
 {% endif %}
 
 <!-- is authenticated -->

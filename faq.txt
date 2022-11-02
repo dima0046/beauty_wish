@@ -1,3 +1,4 @@
+export FLASK_APP=webapp && flask db init
 flask db stamp head
 flask db migrate
 export FLASK_APP=webapp && flask db migrate -m "comment table added"
