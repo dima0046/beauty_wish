@@ -96,5 +96,6 @@ def edit():
                     getattr(form, field).label.text,
                     errors
                 ))
+            form.email.data = current_user.email
         return render_template('user/edit.html', page_title=title, email=current_user.email, form=form)
     return redirect(url_for('user.login'))
