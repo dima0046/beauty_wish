@@ -34,7 +34,7 @@ def single_item(product_id):
 
 @blueprint.route('/product/comment', methods=['POST'])
 @login_required
-def add_comment():
+def add_comment(user_id):
     form = CommentForm()
     if form.validate_on_submit():
         comment = Comment(text=form.comment_text.data, product_id=form.product_id.data, user_id=current_user.id)

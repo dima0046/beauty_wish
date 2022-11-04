@@ -1,5 +1,6 @@
+import email
 from flask import flash, render_template, redirect, url_for, Blueprint
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 from webapp.utils import get_redirect_target
 
 # flash - позволяет передавать сообщения между route-ами
@@ -7,7 +8,7 @@ from webapp.utils import get_redirect_target
 # url_for - помогает получить url по имени функции, которая этот url обрабатывает
 
 from webapp.db import db
-from webapp.user.forms import LoginForm, RegistrationForm
+from webapp.user.forms import LoginForm, RegistrationForm, EditForm
 from webapp.user.models import User
 
 
@@ -70,3 +71,30 @@ def process_reg():
                 errors
             ))
     return redirect(url_for('user.register'))
+
+
+
+
+
+#Редактирование данных пользователя
+@blueprint.route('/editaccount', methods=['GET', 'POST'])
+@login_required
+def edit():
+    title = "Редактирование данных"
+    form = EditForm()
+    #user_row = User.query.filter(User.id == current_user.id).first()
+    if current_user.is_authenticated:
+        if form.validate_on_submit():
+            #if form.email.data != user_row.email:
+                #user_row.email = form.email.data
+                db.session.commit()
+                flash('Данные обновлены!')
+                render_template('user/edit.html', page_title=title, email=current_user.email, form=form)
+        else:
+            for field, errors  in form.errors.items():
+                flash('Ошибка в поле {}: {}'.format(
+                    getattr(form, field).label.text,
+                    errors
+                ))
+        return render_template('user/edit.html', page_title=title, email=current_user.email, form=form)
+    return redirect(url_for('user.login'))

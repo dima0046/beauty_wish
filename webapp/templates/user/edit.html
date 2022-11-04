@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}<br>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="col-4">
+    <!-- Всплывающие сообщения  -->
+
+    <h2>{{ page_title }}</h2>
+    {{ email }}
+    <form action="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.email.label }}<br>
+            {{ form.email() }}
+        </div>
+
+        <p>{{ form.submit }}</p>
+    </form>
+</div>
+<div class="col-8">
+</div>
+{% endblock %}
