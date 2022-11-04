@@ -1,6 +1,9 @@
 import email
-from flask import flash, render_template, redirect, url_for, Blueprint
+import re
+from flask import flash, render_template, redirect, url_for, Blueprint, request
 from flask_login import current_user, login_user, logout_user, login_required
+from flask_change_password import ChangePassword, ChangePasswordForm, SetPasswordForm
+from webapp import user
 from webapp.utils import get_redirect_target
 
 # flash - позволяет передавать сообщения между route-ами
@@ -14,11 +17,11 @@ from webapp.user.models import User
 
 blueprint = Blueprint('user', __name__, url_prefix='/users') # все адреса этой формы будут
                                                              # начинаться с /user (".../user/login" и т.д.)
-
+# авторизация пользователя
 @blueprint.route('/login')
 def login():
     if current_user.is_authenticated:
-        return redirect(get_redirect_target())
+        redirect(url_for('products.index'))
     title = "Авторизация"
     login_form = LoginForm()
     return render_template('user/login.html', page_title=title, form=login_form)
@@ -32,8 +35,8 @@ def process_login():
         if user and user.check_password(form.password.data):  # Если пользователь существует, то проверяем пароль
             login_user(user,
                        remember=form.remember_me.data)  # логиним пользователя, если всё ок. Сохраняем значение чекбокса "Запомнить меня"
-            flash('Вы вошли на сайт')
-            return redirect(get_redirect_target())
+            
+            return redirect(url_for('products.index'))
     flash('Неправильное имя пользователя или пароль')
     return redirect(url_for('user.login'))
 
@@ -43,6 +46,7 @@ def logout():
     logout_user()
     return redirect(url_for('products.index'))
 
+
 #Регистрация пользователя
 @blueprint.route('/register')
 def register():
@@ -51,6 +55,7 @@ def register():
     form = RegistrationForm()
     title = "Регистрация"
     return render_template('user/registration.html', page_title=title, form=form)
+
 
 # Обработчик регистрации
 @blueprint.route('/process-reg', methods=['POST'])
@@ -78,24 +83,31 @@ def process_reg():
 
 #Редактирование данных пользователя
 @blueprint.route('/editaccount', methods=['GET', 'POST'])
-@login_required
 def edit():
     title = "Редактирование данных"
     form = EditForm()
+    form.email.data = current_user.email
+    form.username.data = current_user.username
     #user_row = User.query.filter(User.id == current_user.id).first()
     if current_user.is_authenticated:
         if form.validate_on_submit():
-            #if form.email.data != user_row.email:
-                #user_row.email = form.email.data
-                db.session.commit()
-                flash('Данные обновлены!')
-                render_template('user/edit.html', page_title=title, email=current_user.email, form=form)
+            user_ = User.query.filter_by(id=current_user.id).first()
+            user_.username = request.form['username']
+            user_.email = request.form['email']
+            if form.password.data != current_user.password:
+                user_.set_password(form.password.data)
+            
+            db.session.commit()
+
+            flash('Данные обновлены!')
+            form.username.data = user_.username
+            form.email.data = user_.email
+            render_template('user/edit.html', page_title=title, form=form)
         else:
             for field, errors  in form.errors.items():
                 flash('Ошибка в поле {}: {}'.format(
                     getattr(form, field).label.text,
                     errors
-                ))
-            form.email.data = current_user.email
-        return render_template('user/edit.html', page_title=title, email=current_user.email, form=form)
+                ))            
+        return render_template('user/edit.html', page_title=title, form=form)
     return redirect(url_for('user.login'))

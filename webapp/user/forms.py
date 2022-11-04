@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import BooleanField, StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
+
 from webapp.user.models import User
 
 
@@ -33,9 +34,11 @@ class RegistrationForm(FlaskForm):
 class EditForm(FlaskForm):
         username = StringField('Имя пользователя', validators=[DataRequired()], render_kw={"class": "form-control"})
         email = StringField('Email', validators=[DataRequired()], render_kw={"class": "form-control"})
-        #oldpassword = PasswordField('Введите старый пароль', validators=[DataRequired()], render_kw={"class": "form-control"})
-        #password = PasswordField('Введите новый пароль', validators=[DataRequired()], render_kw={"class": "form-control"})
-        #password2 = PasswordField('Повторите пароль', validators=[DataRequired(), EqualTo('password')], render_kw={"class": "form-control"})
+        oldpassword = PasswordField('Введите старый пароль', validators=[DataRequired()], render_kw={"class": "form-control"})
+        password = PasswordField('Введите новый пароль', validators=[DataRequired()], render_kw={"class": "form-control"})
+        password2 = PasswordField('Повторите пароль', validators=[DataRequired(), EqualTo('password')], render_kw={"class": "form-control"})
         submit = SubmitField('Отправить!',render_kw={"class": "btn btn-primary"})
+
+
 
 

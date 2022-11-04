@@ -6,7 +6,7 @@
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-success" role="alert">
                 {{ message }}<br>
             </div>
         {% endfor %}
@@ -20,17 +20,32 @@
     </div>
 
 
-<div class="col-5">
+<div class="col-6">
     <form action="" method="POST" novalidate>
     {{ form.hidden_tag() }}
     <div class="form-group">
+        {{ form.username.label }}<br>
+        {{ form.username() }}
+    </div>
+    <div class="form-group">
         {{ form.email.label }}<br>
         {{ form.email() }}
+    </div> 
+    <div class="form-group">
+        {{ form.oldpassword.label }}<br>
+        {{ form.oldpassword() }}
     </div>
-
+    <div class="form-group">
+        {{ form.password.label }}<br>
+        {{ form.password() }}
+    </div>
+    <div class="form-group">
+        {{ form.password2.label }}<br>
+        {{ form.password2() }}
+    </div> 
     <p>{{ form.submit }}</p>
 </form>
-<div class="col-7"></div>
+<div class="col-6"></div>
 </div>
 
 </div>

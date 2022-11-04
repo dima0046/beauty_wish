@@ -1,5 +1,7 @@
-<link type="text/css" rel="stylesheet" href="../static/css/productlist.css"/>
+<link type="text/css" rel="stylesheet" href="../static/css/productlist.css" />
 <script src="../static/js/productlist.js"></script>
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {% extends "base.html" %}
 {% block content %}
@@ -12,7 +14,7 @@
     <button class="btn btn-danger btn-list">List View</button>
 -->
 
-<div class="container grid-container">    
+<div class="container grid-container">
     <div class="row">
         {% for product in product_list %}
         <div class="col-12 col-md-6 col-lg-4">
@@ -20,15 +22,29 @@
                 <!--<img class="card-img-top" src="{{ product.image }}" alt="product.brand_name" sizes="16x16">-->
                 <img class="center" src="{{ product.image }}" alt="product.brand_name" height="130" width="130">
                 <div class="card-body">
-                    <h5><a href="{{ url_for('products.single_item', product_id=product.id) }}"> {{product.brand_full_string}} </a></h5>
-                    <p class="card-text">от {{product.price}} руб.</p>
+                    <h5><a href="{{ url_for('products.single_item', product_id=product.id) }}">
+                            {{product.brand_full_string}} </a></h5>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <p class="card-text">от {{product.price}} руб.</p>
+                        </div>
+                        <div class="pull-right">
+                            <button id="favorite" class="btn btn-light">
+                                <img src="../static/img/heart_holow.svg" width="20" height="20">
+                            </button>
+                        </div>
+
+                        <!--<img src="../static/img/heart_holow.svg" width="20" height="20">-->
+
+                        <!--
+                               
+                            -->
+                    </div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
-    
-
 </div>
 </div>
 {% endblock %}
