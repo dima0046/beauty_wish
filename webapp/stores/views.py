@@ -15,15 +15,15 @@ blueprint = Blueprint('products', __name__)
 @blueprint.route('/index/<int:page_num>', methods = ['GET', 'POST'])
 def index(page_num=1):
     page_title = "Beauty Wish"
-    # weather = weather_by_city(app.config["WEATHER_DEFAULT_CITY"])
-    # get_podrujka_make()
+    hide_title = "main"
+    hide_title2 = "main"
     product_list1 = Products.query.all()
     product_list = Products.query.paginate(per_page=12, page=page_num, error_out=False)
     category_list = Category.query.all()
 
     #product_list1 = Products.query.
     return render_template('products/index.html', page_title=page_title, product_list=product_list.items, 
-    pages=product_list.iter_pages(left_edge=5), category_list=category_list)
+    pages=product_list.iter_pages(left_edge=5), category_list=category_list, hide_title=hide_title, hide_title2=hide_title2)
 
 
 @blueprint.route('/product/<int:product_id>')
@@ -69,15 +69,17 @@ def add_to_favorite(product_id):
     return render_template('products/index.html', page_title=page_title, product_list=product_list)
 
 
-#@blueprint.route('/category/<int:category_id>')
-#def single_item(product_id):
-#    my_product = Products.query.filter(Products.id == product_id).first()
-#    store_list = Stores.query.filter(Stores.id == my_product.store_id).all()
-#    if not my_product:
-#        abort(404)
-#
-#    comment_form = CommentForm(product_id=my_product.id)
-#    return render_template('products/single_product.html', page_title=my_product.brand_full_string,
-#                           store_list=store_list, product=my_product, comment_form=comment_form)
+@blueprint.route('/category/<category_id>', methods = ['GET', 'POST'])
+@blueprint.route('/category/<category_id>/<int:page_num>', methods = ['GET', 'POST'])
+def get_category(category_id, page_num=1):
+    page_title = "Beauty Wish"
+    hide_title = "main"
+    hide_title2 = "cat"
+    product_list = Products.query.filter(Products.category == category_id).paginate(per_page=12, page=page_num, error_out=False)
+    category_list = Category.query.all()
+    current_category = Category.query.filter(Category.id == category_id).first()
+    return render_template('products/index.html', page_title=page_title, product_list=product_list.items, 
+    pages=product_list.iter_pages(left_edge=5), category_list=category_list, category=current_category.id, 
+    category_name=current_category.name, hide_title=hide_title, hide_title2 = hide_title2)
 
 

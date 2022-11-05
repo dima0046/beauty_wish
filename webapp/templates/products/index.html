@@ -2,13 +2,7 @@
 <script src="../static/js/productlist.js"></script>
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script>
-    function add_to_favorite(productId) {
-        fetch('/button/productId',
-            { method: 'POST' }
-        )
-    }
-</script>
+
 
 {% extends "base.html" %}
 {% block content %}
@@ -24,6 +18,9 @@
 -->
 
 <div class="container grid-container">
+    {% if hide_title2 == "cat" %}
+    <h3>Товар категории "{{category_name}}"</h3>
+    {% endif %}
     <div class="row">
         {% for product in product_list %}
         <div class="col-12 col-md-6 col-lg-4">
@@ -63,7 +60,15 @@
             <nav aria-label="...">
                 <ul class="pagination">
                     <li class="page-item">
+                        {% if hide_title2 == "main" %}
                         <a class="page-link" href="{{ url_for('products.index', page_num=page) }}">{{ page }}</a>
+                        {% else %}
+                        {% if hide_title2 == "cat" %}
+                        <a class="page-link"
+                            href="{{ url_for('products.get_category', category_id=category, page_num=page) }}">{{ page
+                            }}</a>
+                        {% endif %}
+                        {% endif %}
                     </li>
             </nav>
             {% else %}
