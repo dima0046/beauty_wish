@@ -25,7 +25,8 @@ def save_products(brand_full_string, brand_name, brand_product, url, image, pric
     store_exists = Stores.query.filter(Stores.id == store_id).count()
     # print(news_exists)
     
-    old_price =  int(product_price.price)
+    if product_exists != 0:
+        old_price =  int(product_price.price)
     price = int(price)
     
     # Сохранение нового продукта в БД
@@ -35,7 +36,7 @@ def save_products(brand_full_string, brand_name, brand_product, url, image, pric
         db.session.add(new_product)
         db.session.commit()
     #Обновление цены на продукцию
-    elif product_exists == 1 and product_price.price != price:
+    elif product_exists != 0 and product_price.price != price:
         product_price.price = price
         print(f'Цена продукта {brand_full_string} сменилась с {old_price} на {product_price.price}')
         db.session.commit()    

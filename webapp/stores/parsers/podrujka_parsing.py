@@ -31,7 +31,7 @@ def get_podrujka_make():
             price = item.find('span').text
 
             # категория
-            category = "Макияж"
+            category = 1
 
             # подкатегория
             subcategory = "Глаза"

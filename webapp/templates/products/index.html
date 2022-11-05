@@ -2,12 +2,21 @@
 <script src="../static/js/productlist.js"></script>
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+    function add_to_favorite(productId) {
+        fetch('/button/productId',
+            { method: 'POST' }
+        )
+    }
+</script>
 
 {% extends "base.html" %}
 {% block content %}
 
 
 {% include('messages.html') %}
+
+
 <!--
 <div class="container mb-3 mt-3">
     <button class="btn btn-primary btn-grid">Grid View</button>
@@ -29,9 +38,11 @@
                             <p class="card-text">от {{product.price}} руб.</p>
                         </div>
                         <div class="pull-right">
-                            <button id="favorite" class="btn btn-light">
+                            <h5><a href="{{ url_for('products.add_to_favorite', product_id=product.id) }}">
+                                    fav </a></h5>
+                            <!--<button id="favorite" class="btn btn-light" value="Добавить в избранное" onclick="add_to_favorite(product.id)">
                                 <img src="../static/img/heart_holow.svg" width="20" height="20">
-                            </button>
+                            </button>-->
                         </div>
 
                         <!--<img src="../static/img/heart_holow.svg" width="20" height="20">-->
@@ -45,6 +56,27 @@
         </div>
         {% endfor %}
     </div>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            {% for page in pages%}
+            {% if page %}
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('products.index', page_num=page) }}">{{ page }}</a>
+                    </li>
+            </nav>
+            {% else %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+
+
 </div>
+
+<!-- posts is a Paginate object -->
+
 </div>
 {% endblock %}
