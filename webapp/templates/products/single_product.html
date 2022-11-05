@@ -27,9 +27,9 @@
     </tr>
   </thead>
   <tbody>
-    {% for store in store_list %}
-    <th scope="row"><a href="{{ product.url }}">{{ store.name }}</a></th>
-    <td>{{ product.price }} руб.</td>
+    {% for prod in common_list %}
+    <th scope="row"><a href="{{ prod.url }}">{{ prod.store_name }}</a></th>
+    <td>{{ prod.price }} руб.</td>
     {% endfor %}
   </tbody>
 </table>

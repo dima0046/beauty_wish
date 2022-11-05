@@ -20,8 +20,6 @@ def index(page_num=1):
     product_list1 = Products.query.all()
     product_list = Products.query.paginate(per_page=12, page=page_num, error_out=False)
     category_list = Category.query.all()
-
-    #product_list1 = Products.query.
     return render_template('products/index.html', page_title=page_title, product_list=product_list.items, 
     pages=product_list.iter_pages(left_edge=5), category_list=category_list, hide_title=hide_title, hide_title2=hide_title2)
 
@@ -29,13 +27,18 @@ def index(page_num=1):
 @blueprint.route('/product/<int:product_id>')
 def single_item(product_id):
     my_product = Products.query.filter(Products.id == product_id).first()
-    store_list = Stores.query.filter(Stores.id == my_product.store_id).all()
+    similar_products = Products.query.filter(Products.brand_product.contains(my_product.brand_product)).all()
+    common_list = []
+    for prod in similar_products:
+        store_list = Stores.query.filter(Stores.id == prod.store_id).first()
+        row = {'store_id': store_list.id, 'store_name':store_list.name, 'price': prod.price, 'url': prod.url}
+        common_list.append(row)
     if not my_product:
         abort(404)
 
     comment_form = CommentForm(product_id=my_product.id)
     return render_template('products/single_product.html', page_title=my_product.brand_full_string,
-                           store_list=store_list, product=my_product, comment_form=comment_form)
+                           store_list=store_list, product=my_product, comment_form=comment_form, similar_products=similar_products, common_list=common_list)
 
 
 
