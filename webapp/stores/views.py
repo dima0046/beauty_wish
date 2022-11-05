@@ -27,7 +27,7 @@ def index(page_num=1):
 @blueprint.route('/product/<int:product_id>')
 def single_item(product_id):
     my_product = Products.query.filter(Products.id == product_id).first()
-    similar_products = Products.query.filter(Products.brand_product.like(my_product.brand_product)).all()
+    similar_products = Products.query.filter(Products.brand_product.contains(my_product.brand_product)).all()
     common_list = []
     for prod in similar_products:
         store_list = Stores.query.filter(Stores.id == prod.store_id).first()
