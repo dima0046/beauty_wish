@@ -2,7 +2,7 @@ from datetime import datetime
 
 from bs4 import BeautifulSoup # Для упрощённой работы с HTML
 
-from webapp.stores.parsers.utils import get_html, save_products
+from utils import get_html, save_products
 
 def get_magnit_make():
     html = get_html("https://magnitcosmetic.ru/catalog/kosmetika/makiyazh_glaz/teni_i_bazy_dlya_vek/")
@@ -31,7 +31,7 @@ def get_magnit_make():
             price = item.find('div', class_='item-price_value js-item_price-value').text            
 
             # категория
-            category = "Макияж"
+            category = 1
 
             # подкатегория
             subcategory = "Глаза"

@@ -61,12 +61,15 @@ def add_comment():
     return redirect(get_redirect_target())
 
 
-@blueprint.route('/button/')  # декоратор
+@blueprint.route('/favorite/<int:product_id>', methods=['POST'])  # декоратор
 def add_to_favorite(product_id):
+
     product = Products.query.filter(Products.id == product_id).first()
+    print(product)
     favorite_item = Favorites(product_id=product.id, user_id=current_user.id)
     db.session.add(favorite_item)
     db.session.commit()
+
     product_list = Products.query.all()
     page_title = "Beauty Wish"
     return render_template('products/index.html', page_title=page_title, product_list=product_list)
