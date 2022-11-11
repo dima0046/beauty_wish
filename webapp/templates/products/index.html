@@ -11,6 +11,13 @@
 {% include('messages.html') %}
 
 
+<script>
+function add_to_favorite(productId, user_id) {
+    fetch('http://localhost:5000/favorite/'+productId,
+    {method: 'POST'})
+    }
+</script>
+
 <!--
 <div class="container mb-3 mt-3">
     <button class="btn btn-primary btn-grid">Grid View</button>
@@ -34,25 +41,22 @@
                         <div class="pull-left">
                             <p class="card-text">от {{product.price}} руб.</p>
                         </div>
+                        {% if current_user.is_authenticated %}
                         <div class="pull-right">
-                            <!--<h5><a href="{{ url_for('products.add_to_favorite', product_id=product.id) }}">
-                                    fav </a></h5>-->
-                            <!--<button onclick="add_to_favorite({{ product.id }})" type="button" class="btn btn-light" value="Добавить в избранное" >
-                                <img src="../static/img/heart_holow.svg" width="20" height="20">
-                            </button>-->
+                            <button  onclick="add_to_favorite({{product.id}}, {{current_user.id}})" type="button" class="btn btn-light" value="Добавить в избранное" >
+                                <img src="../static/img/heart_hollow.svg" width="20" height="20">
+                            </button>
+                        {% endif %}
 
+
+                            <!--
                             <form action="{{ url_for('products.add_to_favorite', product_id=product.id) }}" method="POST">
                             <button type="submit" class="btn btn-light" value="Добавить в избранное" >
-                                <img src="../static/img/heart_holow.svg" width="20" height="20">
+                                <img src="../static/img/heart_hollow.svg" width="20" height="20">
                             </button>
                             </form>
-                        </div>
-
-                        <!--<img src="../static/img/heart_holow.svg" width="20" height="20">-->
-
-                        <!--
-                               
                             -->
+                        </div>
                     </div>
                 </div>
             </div>
