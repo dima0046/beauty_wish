@@ -76,7 +76,7 @@ def add_to_favorite(product_id):
     return render_template('products/index.html', page_title=page_title, product_list=product_list)
 
 
-@blueprint.route('/category/<category_id>', methods = ['GET', 'POST'])
+@blueprint.route('/category/<category_id>', methods=['GET', 'POST'])
 @blueprint.route('/category/<category_id>/<int:page_num>', methods = ['GET', 'POST'])
 def get_category(category_id, page_num=1):
     page_title = "Beauty Wish"
@@ -88,5 +88,14 @@ def get_category(category_id, page_num=1):
     return render_template('products/index.html', page_title=page_title, product_list=product_list.items, 
     pages=product_list.iter_pages(left_edge=5), category_list=category_list, category=current_category.id, 
     category_name=current_category.name, hide_title=hide_title, hide_title2 = hide_title2)
+
+
+@blueprint.route('/search', methods=['GET', 'POST'])
+def search_field(result):
+
+    print(result)
+    #page_title = "Beauty Wish"
+    #product_list = Products.query.filter(Products.brand_full_string == result).all()
+    #return render_template('products/index.html', page_title=page_title, product_list=product_list.items)
 
 

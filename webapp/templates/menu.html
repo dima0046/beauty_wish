@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
+<div class="container-fluid">
     <a class="navbar-brand" href="{{ url_for('products.index') }}">
         <img src="../static/img/bw-logo-new.png" width="30" height="30" class="d-inline-block align-top" alt="">
         Beauty Wish
     </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,33 +12,31 @@
 
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <!-- Block "Category"-->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Категории
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    aria-haspopup="true" aria-expanded="false">Категории</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {% for category in category_list%}
-                        <a class="dropdown-item" href="{{ url_for('products.get_category', category_id=category.id) }}">{{ category.name }}</a>
+                    <li><a class="dropdown-item" href="{{ url_for('products.get_category', category_id=category.id) }}">{{ category.name }}</a></li>
                     {% endfor %}
-                </div>
-            </li>
-        </ul>        
-    </div>
-
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-
-
+                </ul>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Введите название" aria-label="Search">
+
+        <!-- Search bar-->
+        <form id="search_by_name" class="form-inline my-2 my-lg-0" action="{{ url_for('products.search_field', result=textbox_search.value) }}" method="POST">
+            <input class="form-control mr-sm-2" name="textbox_search" type="search" placeholder="Введите название" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
         </form>
+        <!--
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" id="textbox_search" type="search" placeholder="Введите название" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="search_field(textbox_search.value)">Поиск</button>
+        </form>
+        -->
+
         <ul class="navbar-nav margin-right">
             {% if current_user.is_authenticated %}
             <li class="nav-item">
@@ -61,4 +60,5 @@
             {% endif %}
         </ul>
     </div>
+</div>
 </nav>
